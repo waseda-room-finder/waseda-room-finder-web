@@ -99,7 +99,7 @@ const PSE = () => {
       fetch("https://wasedatime-milestone.s3-ap-northeast-1.amazonaws.com/reviews/pse_reviews.json")
         .then(res => res.json())
         .then(res => {
-          setCourses(res.filter(c => c.sem.match(/0|1|f/g)).map(c => parseCourse(c, "PSE")));
+          setCourses(res.filter(c => c.sem.match(new Date().getMonth() < 6 ? /0|1|f/g : /2|3|f/g)).map(c => parseCourse(c, "PSE")));
         })
         .catch(err => console.log(err));
     } catch (error) {

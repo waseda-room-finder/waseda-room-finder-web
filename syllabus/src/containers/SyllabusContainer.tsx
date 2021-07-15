@@ -362,11 +362,13 @@ class SyllabusContainer extends React.Component<
           </MediaQuery>
 
           <MiddleColumn>
-            <Link to="/courses/milestone" style={{ maxWidth: "100vw", padding: "0px 1em" }}>
-              <ButtonToMilestone>
-                Link to 2021 Spring Milestone × WTSA
-              </ButtonToMilestone>
-            </Link>
+            {
+              [2, 3, 8, 9].includes(new Date().getMonth()) && <Link to="/courses/milestone" style={{ maxWidth: "100vw", padding: "0px 1em" }}>
+                <ButtonToMilestone>
+                  Link to 2021 {[2, 3].includes(new Date().getMonth()) ? "Spring" : "Fall"} Milestone × WTSA
+                </ButtonToMilestone>
+              </Link>
+            }
             <Suspense fallback={<LoadingSpinner message="Loading..." />}>
               {allFetchedCourses.length > 0 ? (
                 <FetchedCourseList

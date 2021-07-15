@@ -121,7 +121,7 @@ const Rikou = () => {
         fetch(`https://wasedatime-milestone.s3-ap-northeast-1.amazonaws.com/reviews/${school.toLowerCase()}_reviews.json`)
           .then(res => res.json())
           .then(res => {
-            rikouCourses = rikouCourses.concat(res.filter(c => c.sem.match(/0|1|f/g)).map(c => parseCourse(c, school)));
+            rikouCourses = rikouCourses.concat(res.filter(c => c.sem.match(new Date().getMonth() < 6 ? /0|1|f/g : /2|3|f/g)).map(c => parseCourse(c, school)));
             setCourses(rikouCourses);
           })
           .catch(err => console.log(err));

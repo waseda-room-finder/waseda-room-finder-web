@@ -778,10 +778,6 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
